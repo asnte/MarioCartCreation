@@ -1,0 +1,41 @@
+body {
+	    margin: -1px;
+}
+
+.tablesizestyle{
+		width: 100%;
+		height:10%;
+		table-layout: fixed;
+		border-collapse: collapse;
+		empty-cells: show;
+		border: 1px #cccccc solid !important;
+}
+
+.tabledata{
+		margin-top: 0px;
+}
+
+.tablerowstyle{
+        -moz-user-select: -moz-none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        border-left: 1px #ccccccc solid !important;
+}
+
+.RowInDataStyle{
+		width: 100px;
+        height : 50px;
+        -moz-user-select: -moz-none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        border-left: 1px #ccccccc solid !important;
+}
+
+.datafontstyle2{
+	-moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    padding: 5px 10px 5px 10px;
+    font: normal normal bold 100%/100% "ＭＳ Ｐゴシック";
+    color: #222222;
+}

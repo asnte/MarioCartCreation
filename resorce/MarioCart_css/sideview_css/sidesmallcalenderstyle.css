@@ -1,0 +1,113 @@
+@charset "UTF-8";
+
+body {
+    overflow: hidden;
+}
+
+.sidesmallfontstyle1{
+	margin-top:15px;
+	margin-left:20px;
+	-moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    font: normal normal bold 90%/90% "ＭＳ Ｐゴシック";
+    color: #777777;
+    text-align: center;
+}
+
+.InLineBlock{
+		white-space: nowrap;
+		display: inline-block;
+		_display: inline;
+ }
+
+.YajirushiLeftImage{
+		position: absolute;
+		top:24px;
+		left:210px;
+}
+
+.YajirushiRightImage{
+		position: absolute;
+		top:24px;
+		left:230px;
+}
+
+.tabledata{
+		margin-top: 20px;
+}
+
+.tablesizestyle{
+		width: 240px;
+		height:200px ;
+}
+
+.tablerowstyle{
+		width: 10px;
+        heigt : 10px;
+        -moz-user-select: -moz-none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+}
+
+.tablerowdatastyle{
+	color: #ff0000;
+}
+
+.blues{
+	-moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    font-family: arial, sans-serif;
+    text-align: center;
+    font-size: 60%;
+    color: #0000ff;
+}
+
+.reds{
+	-moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    font-family: arial, sans-serif;
+    text-align: center;
+    font-size: 60%;
+    color: #ff0000;
+}
+
+.datafontstyle{
+	-moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    font-family: arial, sans-serif;
+    text-align: center;
+    font-size: 60%;
+}
+
+.datafontstyle2{
+	-moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    font-family: arial, sans-serif;
+    text-align: center;
+    font-size: 100%;
+}
+
+.datafontstyle3{
+	-moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    font-family: arial, sans-serif;
+    text-align: center;
+    font-size: 100%;
+    color: #0000ff;
+}
+
+.datafontstyle4{
+	-moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    font-family: arial, sans-serif;
+    text-align: center;
+    font-size: 100%;
+    color: #ff0000;
+}
