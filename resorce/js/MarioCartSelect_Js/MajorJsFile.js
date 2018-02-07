@@ -35,25 +35,25 @@ $ (function(){
         $('.MajorFile').append('<table class ="table table-hover" id = "PlayerAndcharactorTableHead"><thead><tr><th>PlayerName</th><th>CharactorName</th></tr></thead>');
         $('.MajorFile').append('</table>');
         $('#PlayerAndcharactorTableHead').append('<tbody id = "PlayerAndcharactorTableBody"></tbody>');
-        $('.MajorFile').append('<label class="labelstyle1 positionstyle3">OutPutボタンをクリックし、キャラをランダムに確定します。</label>');
+        $('.MajorFile').append('<label class="labelstyle1 positionstyle3">OutPutボタンをクリックし、使用キャラクターをランダムに確定します。</label>');
         $('.MajorFile').append('<div class="btn-group btn-groupstyle3"><button type="button" id="OutPutButton" class="btn btn-default btn-style1">OutPut</button></div>');
 
         //プレイヤー追加
         $('#PlayerAddButton').click(function(){
-            $("#playerTableBody").empty();
             var textData = $('#textbox1');
             if (textData[0].value != ""){
-                            arrayPlayerData.push([textData[0].value]);
-                            $.each(arrayPlayerData,function(index, textdata) {
+                         $("#playerTableBody").empty();
+                         arrayPlayerData.push([textData[0].value]);
+                         $.each(arrayPlayerData,function(index, textdata) {
                                       $('#playerTableBody').append('<tr class ="tableDataRow"><th>' + (index+1) + '</th>' + '<td>' + textdata + '</td></tr>');
-                            });
+                         });
             }
         });
         //キャラクター追加
         $('#CharactorAddButton').click(function(){
-            $("#charactorTableBody").empty();
             var textData = $('#textbox2');
                    if (textData[0].value != ""){
+                         $("#charactorTableBody").empty();
                          arrayCharactorCurrent.push([textData[0].value]);
                          $.each(arrayCharactorCurrent,function(index, charadata) {
                                     $('#charactorTableBody').append('<tr class ="tableDataRow"><th>' + (index+1) + '</th>' + '<td>' + charadata + '</td></tr>');
@@ -96,6 +96,7 @@ $ (function(){
                  arrayCharactorSelected.splice(arrayNumRand, 1);
             });
 
+            MatchNameNum = 0
             $.each(associationKeyPlayValCharactor,function(player, charactor) {
                  $('#PlayerAndcharactorTableBody').append('<tr class ="tableDataRow"><th>' + player + '</th>' + '<td>' + charactor + '</td></tr>');
            });
