@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+html {
+ overflow-y: scroll;
+}
+
 #playerTableHead{
     width: 500px;
     margin: 20px 20px 50px 20px;
@@ -7,7 +11,15 @@
 
 .btn-groupstyle1{
     height: 50px;
-    margin: 0px 20px 0px 20px;
+    position: fixed;
+    top: 615px;
+    right: 355px;
+}
+
+.positionstyle1 {
+      position: fixed;
+      top: 545px;
+      right: 55px;
 }
 
 .btn-style1{
@@ -17,8 +29,8 @@
     -moz-box-shadow: none !important;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
-    padding: 10px 45px;
-    font-size: 15px;
+    padding: 10px 20px;
+    font-size: 13px;
     border-radius: 8px;
 }
 
@@ -28,6 +40,7 @@
 
 .btn-style1:active {
     background: rgb(170, 170, 170);
+    border: 3px #dbdbdb inset;
 }
 
 .labelstyle1{
@@ -37,4 +50,49 @@
 #textbox1{
     width: 500px;
     margin: 0px 20px;
+}
+
+#charactorTableHead{
+      width: 500px;
+      position: absolute;
+      top: 20px;
+      left: 650px;
+}
+
+.positionstyle2 {
+      position: fixed;
+      top: 680px;
+      right: 55px;
+}
+
+#textbox2{
+    width: 500px;
+    margin: 0px 20px;
+}
+
+.btn-groupstyle2{
+    height: 50px;
+    position: fixed;
+    top: 750px;
+    right: 55px;
+}
+
+#PlayerAndcharactorTableHead{
+    width: 500px;
+    position: absolute;
+    top: 20px;
+    left: 1300px;
+}
+
+.btn-groupstyle3{
+    height: 50px;
+    position: fixed;
+    top: 845px;
+    right: 490px;
+}
+
+.positionstyle3 {
+      position: fixed;
+      top: 815px;
+      right: 100px;
 }
