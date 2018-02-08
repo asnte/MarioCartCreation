@@ -110,3 +110,12 @@ html {
 .tdatafont1{
       font: normal normal 400 100%/120% "Meiryo" ;
 }
+
+.jyugemuimage{
+       position: absolute;
+       top: 20px;
+       left: 2000px;
+       width: 150px;
+       height: 150px;
+       border: 1px #ff0000 solid;
+}

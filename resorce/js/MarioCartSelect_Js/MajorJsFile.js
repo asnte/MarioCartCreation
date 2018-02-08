@@ -8,6 +8,9 @@ var arrayNormalCharactor = ["キノピオ","ノコノコ","ヘイホー","ベビ
 "クッパ","ドンキーコング","ワリオ","ワルイージ",];
 var arrayPlayerChange = Array.apply(null, Array(60)).map(function () {return true });
 var arrayCharactorChange = Array.apply(null, Array(60)).map(function () {return true });
+var arrayHideComand = [38,38,40,40,37,39,37,39,66,65];
+var arrayCurrentComand =[];
+var ComandPushTime ;
 
 $ (function(){
         //Playerに関するHTMLタグの追加
@@ -55,7 +58,6 @@ $ (function(){
 
         $('#textbox1').on("keydown", function(e) {
             if(e.keyCode === 13) {
-                console.log("Enterが押された");
                 $('#PlayerAddButton').trigger("click");
                 return false;
             }
@@ -78,7 +80,6 @@ $ (function(){
 
         $('#textbox2').on("keydown", function(e) {
             if(e.keyCode === 13) {
-                console.log("Enterが押された");
                 $('#CharactorAddButton').trigger("click");
                 return false;
             }
@@ -187,6 +188,30 @@ $ (function(){
                          $('#playerTableBody').append('<tr class ="tableDataRow"><th class ="tdatafont1">' + (index+1) + '</th>' + '<td class ="tdatafont1">' + player + '</td></tr>');
              });
             arrayPlayerChange = Array.apply(null, Array(60)).map(function () {return true });
+        });
+        //コマンド
+        $(window).keyup( function( event ) {
+              if (arrayCurrentComand.length == 0 && event.keyCode == 38){
+                   ComandPushTime = new Date();
+              }
+              arrayCurrentComand.push(event.keyCode);
+              console.log(arrayCurrentComand);
+              var ComandPushEndTime = new Date();
+              console.log(ComandPushEndTime - ComandPushTime);
+              if ((ComandPushEndTime - ComandPushTime) > 3000) {
+                   arrayCurrentComand =[];
+                   ComandPushTime = null;
+              }
+              if (arrayHideComand.toString() == arrayCurrentComand.toString()) {
+                        alert("隠しコマンド実行");
+                        $('.MajorFile').append('<img src="../image/jyugemu.png" class="img-circle jyugemuimage">');
+                        $('.jyugemuimage').animate({'position': 'absolute' ,'top': '-10px', 'left': '1800px'},500,'linear');
+                        $('.jyugemuimage').animate({'position': 'absolute' ,'top': '-20px', 'left': '1500px'},1000,'linear');
+                        $('.jyugemuimage').animate({'position': 'absolute' ,'top': '50px', 'left': '1300px'},1000,'linear');
+
+                        arrayCurrentComand =[];
+                        ComandPushTime = null;
+              }
         });
 
 });
