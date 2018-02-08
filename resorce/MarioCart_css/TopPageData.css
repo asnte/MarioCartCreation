@@ -7,6 +7,11 @@ html {
 #playerTableHead{
     width: 500px;
     margin: 20px 20px 50px 20px;
+     table-layout:fixed;
+}
+
+.theadfont1{
+     font: normal normal normal 100%/100% "Jenkins v2.0";
 }
 
 .btn-groupstyle1{
@@ -57,6 +62,11 @@ html {
       position: absolute;
       top: 20px;
       left: 650px;
+      table-layout:fixed;
+}
+
+#NumColumn{
+     width: 300px;
 }
 
 .positionstyle2 {
@@ -95,4 +105,8 @@ html {
       position: fixed;
       top: 815px;
       right: 25px;
+}
+
+.tdatafont1{
+      font: normal normal 400 100%/120% "Meiryo" ;
 }

@@ -11,18 +11,18 @@ var arrayCharactorChange = Array.apply(null, Array(60)).map(function () {return 
 
 $ (function(){
         //Playerに関するHTMLタグの追加
-        $('.MajorFile').append('<table class ="table table-hover" id = "playerTableHead"><thead><tr><th>Number</th><th>PlayerName</th></tr></thead>');
+        $('.MajorFile').append('<table class ="table table-hover" id = "playerTableHead"><thead class = "theadfont1"><tr><th>Number</th><th id = "NumColumn">PlayerName</th></tr></thead>');
         $('.MajorFile').append('</table>');
         $('#playerTableHead').append('<tbody id = "playerTableBody"></tbody>');
         $('.MajorFile').append('<form><div class="form-group positionstyle1"><label class="labelstyle1">PlayerNameを入力してください。</label><input type="text" class="form-control" id="textbox1" placeholder="PlayerName"></div>');
         $('.MajyorFile').append('</form>')
         $('.MajorFile').append('<div class="btn-group btn-groupstyle1"><button type="button" id="PlayerAddButton" class="btn btn-default btn-style1">PlayerAdd</button><button type="button" id="PlayerRemoveButton" class="btn btn-default btn-style1">PlayerDelete</button></div>');
         //使用キャラに関するHTMLタグの追加
-        $('.MajorFile').append('<table class ="table table-hover" id = "charactorTableHead"><thead><tr><th>Number</th><th>CharactorName</th></tr></thead>');
+        $('.MajorFile').append('<table class ="table table-hover" id = "charactorTableHead"><thead class = "theadfont1"><tr><th>Number</th><th id = "NumColumn">CharactorName</th></tr></thead>');
         $('.MajorFile').append('</table>');
         $('#charactorTableHead').append('<tbody id = "charactorTableBody"></tbody>');
         $.each(arrayNormalCharactor,function(index, charadata) {
-            $('#charactorTableBody').append('<tr class ="tableDataRow"><th>' + (index+1) + '</th>' + '<td>' + charadata + '</td></tr>');
+            $('#charactorTableBody').append('<tr class ="tableDataRow"><th class ="tdatafont1">' + (index+1) + '</th>' + '<td class ="tdatafont1">' + charadata + '</td></tr>');
         });
         arrayCharactorCurrent = arrayNormalCharactor.slice();
         $('.MajorFile').append('<form><div class="form-group positionstyle2"><label class="labelstyle1">CharactorNameを入力してください。</label><input type="text" class="form-control" id="textbox2" placeholder="CharactorName"></div>');
@@ -32,7 +32,7 @@ $ (function(){
         '<button type="button" id="AllCharactorButton" class="btn btn-default btn-style1">AllCharactor</button>'+
         '<button type="button" id="NormalCharactorButton" class="btn btn-default btn-style1">NormalCharactor</button></div>');
         //結果出力
-        $('.MajorFile').append('<table class ="table table-hover" id = "PlayerAndcharactorTableHead"><thead><tr><th>PlayerName</th><th>CharactorName</th></tr></thead>');
+        $('.MajorFile').append('<table class ="table table-hover" id = "PlayerAndcharactorTableHead"><thead class = "theadfont1"><tr><th>PlayerName</th><th>CharactorName</th></tr></thead>');
         $('.MajorFile').append('</table>');
         $('#PlayerAndcharactorTableHead').append('<tbody id = "PlayerAndcharactorTableBody"></tbody>');
         $('.MajorFile').append('<label class="labelstyle1 positionstyle3">OutPutボタンをクリックし、使用キャラクターをランダムに確定します。</label>');
@@ -45,10 +45,22 @@ $ (function(){
                          $("#playerTableBody").empty();
                          arrayPlayerData.push([textData[0].value]);
                          $.each(arrayPlayerData,function(index, textdata) {
-                                      $('#playerTableBody').append('<tr class ="tableDataRow"><th>' + (index+1) + '</th>' + '<td>' + textdata + '</td></tr>');
+                                      $('#playerTableBody').append('<tr class ="tableDataRow"><th class ="tdatafont1">' + (index+1) + '</th>' + '<td class ="tdatafont1">' + textdata + '</td></tr>');
                          });
+            }else{
+                         alert('プレイヤー名を入力してください。');
+            }
+            textData[0].value = ""
+        });
+
+        $('#textbox1').on("keydown", function(e) {
+            if(e.keyCode === 13) {
+                console.log("Enterが押された");
+                $('#PlayerAddButton').trigger("click");
+                return false;
             }
         });
+
         //キャラクター追加
         $('#CharactorAddButton').click(function(){
             var textData = $('#textbox2');
@@ -56,16 +68,28 @@ $ (function(){
                          $("#charactorTableBody").empty();
                          arrayCharactorCurrent.push([textData[0].value]);
                          $.each(arrayCharactorCurrent,function(index, charadata) {
-                                    $('#charactorTableBody').append('<tr class ="tableDataRow"><th>' + (index+1) + '</th>' + '<td>' + charadata + '</td></tr>');
+                                    $('#charactorTableBody').append('<tr class ="tableDataRow"><th class ="tdatafont1">' + (index+1) + '</th>' + '<td class ="tdatafont1">' + charadata + '</td></tr>');
                          });
+                  }else{
+                         alert('キャラクター名を入力してください。');
                   }
+             textData[0].value = ""
         });
+
+        $('#textbox2').on("keydown", function(e) {
+            if(e.keyCode === 13) {
+                console.log("Enterが押された");
+                $('#CharactorAddButton').trigger("click");
+                return false;
+            }
+        });
+
         //全ての登場キャラクター表示
         $('#AllCharactorButton').click(function(){
             $("#charactorTableBody").empty();
             arrayCharactorCurrent = arrayAllCharactor.slice();
             $.each(arrayAllCharactor,function(index, charactor) {
-                      $('#charactorTableBody').append('<tr class ="tableDataRow"><th>' + (index+1) + '</th>' + '<td>' + charactor + '</td></tr>');
+                      $('#charactorTableBody').append('<tr class ="tableDataRow"><th class ="tdatafont1">' + (index+1) + '</th>' + '<td class ="tdatafont1">' + charactor + '</td></tr>');
              });
         });
         //通常キャラクター表示
@@ -73,7 +97,7 @@ $ (function(){
             $("#charactorTableBody").empty();
             arrayCharactorCurrent = arrayNormalCharactor.slice();
             $.each(arrayNormalCharactor,function(index, charactor) {
-                      $('#charactorTableBody').append('<tr class ="tableDataRow"><th>' + (index+1) + '</th>' + '<td>' + charactor + '</td></tr>');
+                      $('#charactorTableBody').append('<tr class ="tableDataRow"><th class ="tdatafont1">' + (index+1) + '</th>' + '<td class ="tdatafont1">' + charactor + '</td></tr>');
              });
         });
         //出力
@@ -82,23 +106,32 @@ $ (function(){
             var arrayCharactorSelected = arrayCharactorCurrent.slice();
             var arrayNumRand;
             var associationKeyPlayValCharactor = {};
-            var MatchNameNum = 2
+            var matchNameNum = 2
 
             $.each(arrayPlayerData,function(index, player) {
                  arrayNumRand = Math.floor(Math.random()*arrayCharactorSelected.length);
-                 console.log(player in associationKeyPlayValCharactor);
                  if (player in associationKeyPlayValCharactor) {
-                       associationKeyPlayValCharactor[player+'※'+MatchNameNum+'人目']=arrayCharactorSelected[arrayNumRand];
-                       MatchNameNum += 1
+                       associationKeyPlayValCharactor[player+'※'+matchNameNum+'人目']=arrayCharactorSelected[arrayNumRand];
+                       matchNameNum += 1
                 }else{
                        associationKeyPlayValCharactor[player]=arrayCharactorSelected[arrayNumRand];
                 }
                  arrayCharactorSelected.splice(arrayNumRand, 1);
             });
 
-            MatchNameNum = 0
+            matchNameNum = 0;
+            console.log(arrayPlayerChange.indexOf(false));
+            console.log(arrayPlayerChange);
+
             $.each(associationKeyPlayValCharactor,function(player, charactor) {
-                 $('#PlayerAndcharactorTableBody').append('<tr class ="tableDataRow"><th>' + player + '</th>' + '<td>' + charactor + '</td></tr>');
+                 if (arrayPlayerChange.indexOf(false) == -1){
+                        $('#PlayerAndcharactorTableBody').append('<tr class ="tableDataRow"><th  class ="tdatafont1">' + player + '</th>' + '<td class ="tdatafont1">' + charactor + '</td></tr>');
+                 }else{
+                        if (arrayPlayerChange[matchNameNum] == false){
+                                $('#PlayerAndcharactorTableBody').append('<tr class ="tableDataRow"><th class ="tdatafont1">' + player + '</th>' + '<td class ="tdatafont1">' + charactor + '</td></tr>');
+                        }
+                        matchNameNum += 1;
+                 }
            });
         });
         //登場キャラクターの選択
@@ -125,7 +158,7 @@ $ (function(){
                   arrayPlayerChange[clickRowNum]=true;
             }
         });
-        //登場キャラクターの削除
+        //キャラクターの削除
         $('#CharactorRemoveButton').click(function(){
             $("#charactorTableBody").empty();
             var deleteCount = 0;
@@ -136,7 +169,7 @@ $ (function(){
                    }
             });
             $.each( arrayCharactorCurrent,function(index, charactor) {
-                         $('#charactorTableBody').append('<tr class ="tableDataRow"><th>' + (index+1) + '</th>' + '<td>' + charactor + '</td></tr>');
+                         $('#charactorTableBody').append('<tr class ="tableDataRow"><th class ="tdatafont1">' + (index+1) + '</th>' + '<td class ="tdatafont1">' + charactor + '</td></tr>');
              });
             arrayCharactorChange = Array.apply(null, Array(60)).map(function () {return true });
         });
@@ -151,7 +184,7 @@ $ (function(){
                    }
             });
             $.each( arrayPlayerData,function(index, player) {
-                         $('#playerTableBody').append('<tr class ="tableDataRow"><th>' + (index+1) + '</th>' + '<td>' + player + '</td></tr>');
+                         $('#playerTableBody').append('<tr class ="tableDataRow"><th class ="tdatafont1">' + (index+1) + '</th>' + '<td class ="tdatafont1">' + player + '</td></tr>');
              });
             arrayPlayerChange = Array.apply(null, Array(60)).map(function () {return true });
         });
