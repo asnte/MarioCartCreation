@@ -203,15 +203,19 @@ $ (function(){
                    ComandPushTime = null;
               }
               if (arrayHideComand.toString() == arrayCurrentComand.toString()) {
-                        alert("隠しコマンド実行");
-                        $('.MajorFile').append('<img src="../image/jyugemu.png" class="img-circle jyugemuimage">');
-                        $('.jyugemuimage').animate({'position': 'absolute' ,'top': '-10px', 'left': '1800px'},500,'linear');
-                        $('.jyugemuimage').animate({'position': 'absolute' ,'top': '-20px', 'left': '1500px'},1000,'linear');
-                        $('.jyugemuimage').animate({'position': 'absolute' ,'top': '50px', 'left': '1300px'},1000,'linear');
-
-                        arrayCurrentComand =[];
-                        ComandPushTime = null;
+                    alert("隠しコマンド実行");
+                    var point = CarvePoint();
+                    $('.MajorFile').append('<img src="../image/jyugemu.png" class="img-circle jyugemuimage">');
+                    $('.jyugemuimage').animate({'position': 'absolute' ,'top': '50px', 'left': '1600px'},1000,'linear');
+                    arrayCurrentComand =[];
+                    ComandPushTime = null;
               }
         });
-
 });
+
+function CarvePoint(t,x1,y1,x2,y2,x3,y3) {
+  var tp = 1 - t;
+      x = t * t * x3 + 2 * t * tp * x2 + tp * tp * x1;
+      y = t * t * y3 + 2 * t * tp * y2 + tp * tp * y1;
+  return [x,y];
+}
