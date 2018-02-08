@@ -195,9 +195,7 @@ $ (function(){
                    ComandPushTime = new Date();
               }
               arrayCurrentComand.push(event.keyCode);
-              console.log(arrayCurrentComand);
               var ComandPushEndTime = new Date();
-              console.log(ComandPushEndTime - ComandPushTime);
               if ((ComandPushEndTime - ComandPushTime) > 3000) {
                    arrayCurrentComand =[];
                    ComandPushTime = null;
@@ -205,8 +203,13 @@ $ (function(){
               if (arrayHideComand.toString() == arrayCurrentComand.toString()) {
                     alert("隠しコマンド実行");
                     var point = CarvePoint();
-                    $('.MajorFile').append('<img src="../image/jyugemu.png" class="img-circle jyugemuimage">');
+                    $('.MajorFile').append('<div class="damy1"><img src="../image/jyugemu.png" class="img-circle jyugemuimage"></div>');
                     $('.jyugemuimage').animate({'position': 'absolute' ,'top': '50px', 'left': '1600px'},1000,'linear');
+                    $('.damy1').css({ left: 0 }).animate({ left: 1 }, {duration: 2000,
+                        step: function(current) {
+                        var point = CarvePoint(current, 1600, 50, 900, 1200, 200, 50);
+                        $('.jyugemuimage').css({ left: point[0], top: point[1] });
+                     }});
                     arrayCurrentComand =[];
                     ComandPushTime = null;
               }
