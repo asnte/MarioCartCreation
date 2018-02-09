@@ -10,22 +10,23 @@ var arrayPlayerChange = Array.apply(null, Array(60)).map(function () {return tru
 var arrayCharactorChange = Array.apply(null, Array(60)).map(function () {return true });
 var arrayHideComand = [38,38,40,40,37,39,37,39,66,65];
 var arrayCurrentComand =[];
+var buttonHide= false;
 var ComandPushTime ;
 
 $ (function(){
         //Playerに関するHTMLタグの追加
-        $('.MajorFile').append('<table class ="table table-hover" id = "playerTableHead"><thead class = "theadfont1"><tr><th>Number</th><th id = "NumColumn">PlayerName</th></tr></thead>');
+        $('.MajorFile').append('<table class ="table table-hover" id = "playerTableHead"><thead><tr><th class = "theadfont1">Number</th><th class = "theadfont2">PlayerName</th></tr></thead>');
         $('.MajorFile').append('</table>');
         $('#playerTableHead').append('<tbody id = "playerTableBody"></tbody>');
         $('.MajorFile').append('<form><div class="form-group positionstyle1"><label class="labelstyle1">PlayerNameを入力してください。</label><input type="text" class="form-control" id="textbox1" placeholder="PlayerName"></div>');
         $('.MajyorFile').append('</form>')
         $('.MajorFile').append('<div class="btn-group btn-groupstyle1"><button type="button" id="PlayerAddButton" class="btn btn-default btn-style1">PlayerAdd</button><button type="button" id="PlayerRemoveButton" class="btn btn-default btn-style1">PlayerDelete</button></div>');
         //使用キャラに関するHTMLタグの追加
-        $('.MajorFile').append('<table class ="table table-hover" id = "charactorTableHead"><thead class = "theadfont1"><tr><th>Number</th><th id = "NumColumn">CharactorName</th></tr></thead>');
+        $('.MajorFile').append('<table class ="table table-hover" id = "charactorTableHead"><thead><tr><th class = "theadfont1">Number</th><th class = "theadfont2">CharactorName</th></tr></thead>');
         $('.MajorFile').append('</table>');
         $('#charactorTableHead').append('<tbody id = "charactorTableBody"></tbody>');
         $.each(arrayNormalCharactor,function(index, charadata) {
-            $('#charactorTableBody').append('<tr class ="tableDataRow"><th class ="tdatafont1">' + (index+1) + '</th>' + '<td class ="tdatafont1">' + charadata + '</td></tr>');
+            $('#charactorTableBody').append('<tr class ="tableDataRow"><th class ="tdatafont1">' + (index+1) + '</th>' + '<td class ="tdatafont2">' + charadata + '</td></tr>');
         });
         arrayCharactorCurrent = arrayNormalCharactor.slice();
         $('.MajorFile').append('<form><div class="form-group positionstyle2"><label class="labelstyle1">CharactorNameを入力してください。</label><input type="text" class="form-control" id="textbox2" placeholder="CharactorName"></div>');
@@ -35,11 +36,12 @@ $ (function(){
         '<button type="button" id="AllCharactorButton" class="btn btn-default btn-style1">AllCharactor</button>'+
         '<button type="button" id="NormalCharactorButton" class="btn btn-default btn-style1">NormalCharactor</button></div>');
         //結果出力
-        $('.MajorFile').append('<table class ="table table-hover" id = "PlayerAndcharactorTableHead"><thead class = "theadfont1"><tr><th>PlayerName</th><th>CharactorName</th></tr></thead>');
+        $('.MajorFile').append('<table class ="table table-hover" id = "PlayerAndcharactorTableHead"><thead><tr><th class = "theadfont3">PlayerName</th><th class = "theadfont4">CharactorName</th></tr></thead>');
         $('.MajorFile').append('</table>');
         $('#PlayerAndcharactorTableHead').append('<tbody id = "PlayerAndcharactorTableBody"></tbody>');
         $('.MajorFile').append('<label class="labelstyle1 positionstyle3">OutPutボタンをクリックし、使用キャラクターをランダムに確定します。</label>');
         $('.MajorFile').append('<div class="btn-group btn-groupstyle3"><button type="button" id="OutPutButton" class="btn btn-default btn-style1">OutPut</button><button type="button" id="PurgeButton" class="btn btn-default btn-style1">Purge</button></div>');
+        $('.MajorFile').append('<div class="btn-group btn-groupstyle4"><button type="button" id="HideButton" class="btn btn-default btn-style1">－</button></div>');
 
         //プレイヤー追加
         $('#PlayerAddButton').click(function(){
@@ -48,7 +50,7 @@ $ (function(){
                          $("#playerTableBody").empty();
                          arrayPlayerData.push([textData[0].value]);
                          $.each(arrayPlayerData,function(index, textdata) {
-                                      $('#playerTableBody').append('<tr class ="tableDataRow"><th class ="tdatafont1">' + (index+1) + '</th>' + '<td class ="tdatafont1">' + textdata + '</td></tr>');
+                                      $('#playerTableBody').append('<tr class ="tableDataRow"><th class ="tdatafont1">' + (index+1) + '</th>' + '<td class ="tdatafont2">' + textdata + '</td></tr>');
                          });
             }else{
                          alert('プレイヤー名を入力してください。');
@@ -70,7 +72,7 @@ $ (function(){
                          $("#charactorTableBody").empty();
                          arrayCharactorCurrent.push([textData[0].value]);
                          $.each(arrayCharactorCurrent,function(index, charadata) {
-                                    $('#charactorTableBody').append('<tr class ="tableDataRow"><th class ="tdatafont1">' + (index+1) + '</th>' + '<td class ="tdatafont1">' + charadata + '</td></tr>');
+                                    $('#charactorTableBody').append('<tr class ="tableDataRow"><th class ="tdatafont1">' + (index+1) + '</th>' + '<td class ="tdatafont2">' + charadata + '</td></tr>');
                          });
                   }else{
                          alert('キャラクター名を入力してください。');
@@ -90,7 +92,7 @@ $ (function(){
             $("#charactorTableBody").empty();
             arrayCharactorCurrent = arrayAllCharactor.slice();
             $.each(arrayAllCharactor,function(index, charactor) {
-                      $('#charactorTableBody').append('<tr class ="tableDataRow"><th class ="tdatafont1">' + (index+1) + '</th>' + '<td class ="tdatafont1">' + charactor + '</td></tr>');
+                      $('#charactorTableBody').append('<tr class ="tableDataRow"><th class ="tdatafont1">' + (index+1) + '</th>' + '<td class ="tdatafont2">' + charactor + '</td></tr>');
              });
         });
         //通常キャラクター表示
@@ -98,7 +100,7 @@ $ (function(){
             $("#charactorTableBody").empty();
             arrayCharactorCurrent = arrayNormalCharactor.slice();
             $.each(arrayNormalCharactor,function(index, charactor) {
-                      $('#charactorTableBody').append('<tr class ="tableDataRow"><th class ="tdatafont1">' + (index+1) + '</th>' + '<td class ="tdatafont1">' + charactor + '</td></tr>');
+                      $('#charactorTableBody').append('<tr class ="tableDataRow"><th class ="tdatafont1">' + (index+1) + '</th>' + '<td class ="tdatafont2">' + charactor + '</td></tr>');
              });
         });
         //出力
@@ -126,27 +128,27 @@ $ (function(){
 
             $.each(associationKeyPlayValCharactor,function(player, charactor) {
                  if (arrayPlayerChange.indexOf(false) == -1){
-                        $('#PlayerAndcharactorTableBody').append('<tr class ="tableDataRow"><th  class ="tdatafont1">' + player + '</th>' + '<td class ="tdatafont1">' + charactor + '</td></tr>');
+                        $('#PlayerAndcharactorTableBody').append('<tr class ="tableDataRow"><th  class ="tdatafont3">' + player + '</th>' + '<td class ="tdatafont4">' + charactor + '</td></tr>');
                  }else{
                         if (arrayPlayerChange[matchNameNum] == false){
-                                $('#PlayerAndcharactorTableBody').append('<tr class ="tableDataRow"><th class ="tdatafont1">' + player + '</th>' + '<td class ="tdatafont1">' + charactor + '</td></tr>');
+                                $('#PlayerAndcharactorTableBody').append('<tr class ="tableDataRow"><th class ="tdatafont3">' + player + '</th>' + '<td class ="tdatafont4">' + charactor + '</td></tr>');
                         }
                         matchNameNum += 1;
                  }
-           });
-        });
+             });
+          });
         //登場キャラクターの選択
         $(document).on("click", "#charactorTableBody > .tableDataRow", function(){
-            var clickRowHtmlData = $(this, ".tableDataRow");
-            var clickRowNum = clickRowHtmlData[0].rowIndex-1;
-            if (arrayCharactorChange[clickRowNum] === true){
+              var clickRowHtmlData = $(this, ".tableDataRow");
+              var clickRowNum = clickRowHtmlData[0].rowIndex-1;
+              if (arrayCharactorChange[clickRowNum] === true){
                    $('#charactorTableBody > .tableDataRow').eq(clickRowNum).css({'background-color': '#cccccc'});
                    arrayCharactorChange[clickRowNum]=false;
-            }else{
+              }else{
                   $('#charactorTableBody > .tableDataRow').eq(clickRowNum).css({'background-color': 'transparent'});
                   arrayCharactorChange[clickRowNum]=true;
-            }
-        });
+              }
+          });
         //プレイヤ名選択
         $(document).on("click", "#playerTableBody > .tableDataRow", function(){
             var clickRowHtmlData = $(this, ".tableDataRow");
@@ -170,7 +172,7 @@ $ (function(){
                    }
             });
             $.each( arrayCharactorCurrent,function(index, charactor) {
-                         $('#charactorTableBody').append('<tr class ="tableDataRow"><th class ="tdatafont1">' + (index+1) + '</th>' + '<td class ="tdatafont1">' + charactor + '</td></tr>');
+                         $('#charactorTableBody').append('<tr class ="tableDataRow"><th class ="tdatafont1">' + (index+1) + '</th>' + '<td class ="tdatafont2">' + charactor + '</td></tr>');
              });
             arrayCharactorChange = Array.apply(null, Array(60)).map(function () {return true });
         });
@@ -185,7 +187,7 @@ $ (function(){
                    }
             });
             $.each( arrayPlayerData,function(index, player) {
-                         $('#playerTableBody').append('<tr class ="tableDataRow"><th class ="tdatafont1">' + (index+1) + '</th>' + '<td class ="tdatafont1">' + player + '</td></tr>');
+                         $('#playerTableBody').append('<tr class ="tableDataRow"><th class ="tdatafont1">' + (index+1) + '</th>' + '<td class ="tdatafont2">' + player + '</td></tr>');
              });
             arrayPlayerChange = Array.apply(null, Array(60)).map(function () {return true });
         });
@@ -201,15 +203,21 @@ $ (function(){
                    ComandPushTime = null;
               }
               if (arrayHideComand.toString() == arrayCurrentComand.toString()) {
-                    alert("隠しコマンド実行");
                     var point = CarvePoint();
                     $('.MajorFile').append('<div class="damy1"><img src="../image/jyugemu.png" class="img-circle jyugemuimage"></div>');
                     $('.MajorFile').append('<div class="damy2"><img src="../image/CorseImage.jpg" class="img-circle corseimage"></div>');
+                    $('.MajorFile').append('<div class="damy3"><img src="../image/mario1.png" class="img-circle mario1image"></div>');
                     $('.damy1').css({ left: 0 }).animate({ left: 1 }, {duration: 2000,
                         step: function(current) {
                         var point = CarvePoint(current, -100, 1000, 50, -400, 200, 50);
                         $('.jyugemuimage').css({ left: point[0], top: point[1] });
                      }});
+                    $('.mario1image').animate({'width': '400px', 'height': '400px'}, 350, 'linear');
+                    $('.damy3').css({ left: 0 }).animate({ left: 1 }, {duration: 2000,
+                        step: function(current) {
+                        var point = CarvePoint(current, 1500, 740, 900, 800, 700, 1000);
+                        $('.mario1image').css({ left: point[0], top: point[1] });
+                    }});
                     $('#PurgeButton').css({'visibility': 'visible'});
                     arrayCurrentComand =[];
                     ComandPushTime = null;
@@ -219,7 +227,32 @@ $ (function(){
         $('#PurgeButton').click(function(){
                $('.corseimage').remove();
                $('.jyugemuimage').remove();
+               $('.mario1image').remove();
                $('#PurgeButton').css({'visibility': 'hidden'});
+        });
+        //操作パネル隠し
+        $('#HideButton').click(function(){
+            if (buttonHide === false){
+                $('.positionstyle1').css({'visibility': 'hidden'});
+                $('.positionstyle2').css({'visibility': 'hidden'});
+                $('.positionstyle3').css({'visibility': 'hidden'});
+                $('.btn-groupstyle1').css({'visibility': 'hidden'});
+                $('.btn-groupstyle2').css({'visibility': 'hidden'});
+                $('.btn-groupstyle3').css({'visibility': 'hidden'});
+                var buttontext = $('#HideButton');
+                buttontext[0].textContent ="＋";
+                buttonHide = true;
+            }else{
+                $('.positionstyle1').css({'visibility': 'visible'});
+                $('.positionstyle2').css({'visibility': 'visible'});
+                $('.positionstyle3').css({'visibility': 'visible'});
+                $('.btn-groupstyle1').css({'visibility': 'visible'});
+                $('.btn-groupstyle2').css({'visibility': 'visible'});
+                $('.btn-groupstyle3').css({'visibility': 'visible'});
+                var buttontext = $('#HideButton');
+                buttontext[0].textContent ="－";
+                buttonHide = false;
+            }
         });
 });
 
