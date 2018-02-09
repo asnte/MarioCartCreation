@@ -39,7 +39,7 @@ $ (function(){
         $('.MajorFile').append('</table>');
         $('#PlayerAndcharactorTableHead').append('<tbody id = "PlayerAndcharactorTableBody"></tbody>');
         $('.MajorFile').append('<label class="labelstyle1 positionstyle3">OutPutボタンをクリックし、使用キャラクターをランダムに確定します。</label>');
-        $('.MajorFile').append('<div class="btn-group btn-groupstyle3"><button type="button" id="OutPutButton" class="btn btn-default btn-style1">OutPut</button></div>');
+        $('.MajorFile').append('<div class="btn-group btn-groupstyle3"><button type="button" id="OutPutButton" class="btn btn-default btn-style1">OutPut</button><button type="button" id="PurgeButton" class="btn btn-default btn-style1">Purge</button></div>');
 
         //プレイヤー追加
         $('#PlayerAddButton').click(function(){
@@ -204,21 +204,28 @@ $ (function(){
                     alert("隠しコマンド実行");
                     var point = CarvePoint();
                     $('.MajorFile').append('<div class="damy1"><img src="../image/jyugemu.png" class="img-circle jyugemuimage"></div>');
-                    $('.jyugemuimage').animate({'position': 'absolute' ,'top': '50px', 'left': '1600px'},1000,'linear');
+                    $('.MajorFile').append('<div class="damy2"><img src="../image/CorseImage.jpg" class="img-circle corseimage"></div>');
                     $('.damy1').css({ left: 0 }).animate({ left: 1 }, {duration: 2000,
                         step: function(current) {
-                        var point = CarvePoint(current, 1600, 50, 900, 1200, 200, 50);
+                        var point = CarvePoint(current, -100, 1000, 50, -400, 200, 50);
                         $('.jyugemuimage').css({ left: point[0], top: point[1] });
                      }});
+                    $('#PurgeButton').css({'visibility': 'visible'});
                     arrayCurrentComand =[];
                     ComandPushTime = null;
               }
         });
+        //コマンド後の戻し
+        $('#PurgeButton').click(function(){
+               $('.corseimage').remove();
+               $('.jyugemuimage').remove();
+               $('#PurgeButton').css({'visibility': 'hidden'});
+        });
 });
 
-function CarvePoint(t,x1,y1,x2,y2,x3,y3) {
-  var tp = 1 - t;
-      x = t * t * x3 + 2 * t * tp * x2 + tp * tp * x1;
-      y = t * t * y3 + 2 * t * tp * y2 + tp * tp * y1;
+function CarvePoint(current,startx1,starty1,cpointx2,cpointy2,stopx3,stopy3) {
+  var revcurrent = 1 - current;
+      x = current * current * stopx3 + 2 * current * revcurrent * cpointx2 + revcurrent * revcurrent * startx1;
+      y = current * current * stopy3 + 2 * current * revcurrent * cpointy2 + revcurrent * revcurrent * starty1;
   return [x,y];
 }

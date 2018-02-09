@@ -5,9 +5,12 @@ html {
 }
 
 #playerTableHead{
-    width: 500px;
-    margin: 20px 20px 50px 20px;
+     width: 500px;
+     position: absolute;
+     top: 20px;
+     left: 50px;
      table-layout:fixed;
+     z-index : 50;
 }
 
 .theadfont1{
@@ -19,12 +22,14 @@ html {
     position: fixed;
     top: 615px;
     right: 355px;
+    z-index : 50;
 }
 
 .positionstyle1 {
       position: fixed;
       top: 545px;
       right: 55px;
+      z-index : 50;
 }
 
 .btn-style1{
@@ -61,8 +66,9 @@ html {
       width: 500px;
       position: absolute;
       top: 20px;
-      left: 650px;
+      left: 700px;
       table-layout:fixed;
+      z-index : 50;
 }
 
 #NumColumn{
@@ -73,6 +79,7 @@ html {
       position: fixed;
       top: 680px;
       right: 55px;
+      z-index : 50;
 }
 
 #textbox2{
@@ -85,26 +92,39 @@ html {
     position: fixed;
     top: 750px;
     right: 55px;
+    z-index : 50;
 }
 
 #PlayerAndcharactorTableHead{
     width: 500px;
     position: absolute;
     top: 20px;
-    left: 1300px;
+    left: 1350px;
+    z-index : 50;
 }
 
 .btn-groupstyle3{
     height: 50px;
     position: fixed;
     top: 845px;
-    right: 490px;
+    right: 320px;
+    z-index : 50;
 }
 
 .positionstyle3 {
       position: fixed;
       top: 815px;
       right: 25px;
+      z-index : 50;
+}
+
+#OutPutButton{
+     width: 130px;
+}
+
+#PurgeButton{
+    width: 130px;
+    visibility: hidden;
 }
 
 .tdatafont1{
@@ -113,9 +133,19 @@ html {
 
 .jyugemuimage{
        position: absolute;
-       top: 500px;
-       left: 2000px;
-       width: 150px;
-       height: 150px;
-       border: 1px #ff0000 solid;
+       top: 1000px;
+       left: -100px;
+       width: 200px;
+       height: 200px;
+       border: none;
+       z-index : 100;
+}
+
+.corseimage{
+       position: absolute;
+       top: 0px;
+       left: 0px;
+       width: 100%;
+       height: 100vh;
+       z-index : 1;
 }
